@@ -1,0 +1,23 @@
+<%= javascript_include_tag "raphael-min" %>
+<%= javascript_include_tag "clock" %>
+
+<div>
+  <%= link_to 'Back To Clocks List', clocks_path %>
+</div>
+
+<br/>
+
+<%= @clock.name %>
+<input type="hidden" id="value" value= <%= @clock.minutes_difference %> />
+<div>
+<table border="1">
+  <tr> <div id="clock_id" style="display:inline-block;"></div></tr>
+  <tr> <div style="padding: 0px 20px;"><h2> <span id="digi_clock"></span></h2></div></tr> 
+</table>
+</div>
+
+<script type="text/javascript">
+  var minutes=document.getElementById('value').value;
+  var min = parseInt(minutes)
+  draw_clock(0,min,0);
+</script>

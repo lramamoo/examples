@@ -1,0 +1,15 @@
+<div>
+   <%= link_to 'Back To Clocks List', clocks_path %>
+</div>
+<br/>
+<%= form_for @clock do |f| %>
+  <div >
+    <span class="span-4">Name</span>  
+    <span class="span-2" style='text-align:right;'><%= f.text_field :name %></span>
+    <br/>
+    <span class="span-4">Minutes difference: </span>  
+    <span class="span-2" style='text-align:right;'><%= f.text_field :minutes_difference %></span>
+  </div>
+  <br/>
+  <div class="actions"><%= f.submit "submit" %></div>
+<% end %>

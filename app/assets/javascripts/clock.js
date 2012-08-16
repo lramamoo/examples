@@ -25,8 +25,10 @@ function draw_clock(h,m,s){
  
 function update_clock(h, m, s){
   var now = new Date();
+  h = parseInt((now.getMinutes() + m)/60);
+  m = parseInt((now.getMinutes() + m)%60);
   var hours = now.getHours() + h;
-  var minutes = now.getMinutes() + m;
+  var minutes = m;
   var seconds = now.getSeconds() + s;
   hour_hand.rotate(30*hours+(minutes/2.5), 100, 100);
   minute_hand.rotate(6*minutes, 100, 100);

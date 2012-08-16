@@ -1,13 +1,24 @@
-<%= javascript_include_tag "raphael-min" %>
-<%= javascript_include_tag "clock" %>
-
-<div style="padding: 100px 150px;">
+Time in India: 
+<%= Clock.hour %> : <%= Clock.minutes %> :<%= Clock.seconds %>
+<br/>
+<br/>
+<b>Clocks List:<b/>
+<br/>
+<div>
   <table border="0">
-  <tr><td> <div id="clock_id" style="display:inline-block;"></div></td>
-  <td> <div style="padding: 0px 20px;"><h2>The time is <span id="digi_clock"></span></h2></div></td></tr>
+  <% @clock.each do |c| %>
+  <tr>
+  <td> <%= Clock.display(c.minutes_difference) %> <%= link_to c.name, clock_path(c) %></td>
+  <td> <%= link_to 'Edit', edit_clock_path(c) %></td>
+  <td> <%= link_to 'Destroy', c, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
   </table>
-
 </div>
-<script type="text/javascript">
-  draw_clock(0,0,0);
-</script>
+<br/>
+<div>
+  <span> Add a clock: </span>
+  <%= link_to 'New Clock', new_clock_path %>
+</div>
+
+
